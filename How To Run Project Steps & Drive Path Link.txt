@@ -1,0 +1,24 @@
+                                  To run application: 
+
+1.Unzip and open folder in VS-Studio 
+
+2. Open terminal and execute the following command to fetch the json data
+       a) npm install -g json-server
+       b) npx json-server --watch data.json
+
+3.open one more terminal and execute the following commands
+	a) npm install
+	b) npm start
+
+
+                                   Drive Path Link:
+
+D:\Solution of Graded Assignment 3 React JS
+
+
+
+
+
+
+
+
