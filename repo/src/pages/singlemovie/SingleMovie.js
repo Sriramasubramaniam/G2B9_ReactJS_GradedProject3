@@ -2,7 +2,7 @@ import { Card, Button, Row, Image, Col } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-const baseUrl = process.env.REACT_APP_baseUrl;
+const baseUrl = process.env.REACT_APP_DB_URL;
 const SingleMovie = () => {
   const [movie, setMovie] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,23 +46,31 @@ const SingleMovie = () => {
 
           <Row>
             <Col span={4}>Imdb Rating</Col>
-            <Col span={20}  className="pl-2 mb-2">{movie.imdbRating}</Col>
+            <Col span={20} className="pl-2 mb-2">
+              {movie.imdbRating}
+            </Col>
           </Row>
           <Row>
             <Col span={4}>Content Rating</Col>
-            <Col span={20}  className="pl-2 mb-2">{movie.contentRating}</Col>
+            <Col span={20} className="pl-2 mb-2">
+              {movie.contentRating}
+            </Col>
           </Row>
           <Row>
             <Col span={4}>Average Rating</Col>
-            <Col span={20}  className="pl-2 mb-2">{movie.averageRating}</Col>
+            <Col span={20} className="pl-2 mb-2">
+              {movie.averageRating}
+            </Col>
           </Row>
           <Row>
             <Col span={4}>Duration</Col>
-            <Col span={20}  className="pl-2 mb-2">{movie.duration}</Col>
+            <Col span={20} className="pl-2 mb-2">
+              {movie.duration}
+            </Col>
           </Row>
           <Row>
             <Col span={4}>Genres</Col>
-            <Col span={20}  className="pl-2 mb-2">
+            <Col span={20} className="pl-2 mb-2">
               {movie &&
                 movie.genres &&
                 movie.genres.map((item) => item).join(",")}
@@ -70,7 +78,7 @@ const SingleMovie = () => {
           </Row>
           <Row>
             <Col span={4}>Actors</Col>
-            <Col span={20}  className="pl-2 mb-2">
+            <Col span={20} className="pl-2 mb-2">
               {movie &&
                 movie.actors &&
                 movie.actors.map((item) => item).join(",")}
@@ -78,11 +86,15 @@ const SingleMovie = () => {
           </Row>
           <Row>
             <Col span={4}>Release Date</Col>
-            <Col span={20}  className="pl-2 mb-2">{movie.releaseDate}</Col>
+            <Col span={20} className="pl-2 mb-2">
+              {movie.releaseDate}
+            </Col>
           </Row>
           <Row>
             <Col span={4}>Story line</Col>
-            <Col span={20}  className="pl-2 mb-2">{movie.storyline}</Col>
+            <Col span={20} className="pl-2 mb-2">
+              {movie.storyline}
+            </Col>
           </Row>
         </Col>
       </Row>

@@ -1,11 +1,12 @@
-import { Card, Row, Spin, Col } from "antd";
+import { Card, Row, Spin, Col, Image } from "antd";
 import Meta from "antd/lib/card/Meta";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import FavoriteOutline from "../assets/fav.png";
+import FavoriteFilled from "../assets/fav_selected.png";
 
 const MovieList = (props) => {
   const navigate = useNavigate();
-  const FavouriteComponent = props.favouriteComponent;
   const handleClick = (movie) => {
     navigate(`${movie.title}`);
     localStorage.setItem("movie_id", movie.id);
@@ -21,14 +22,22 @@ const MovieList = (props) => {
         </Row>
       ) : (
         <Row>
-          {// eslint-disable-next-line
-          props.movies.length == 0 ? (
-            <Row justify="center" align="middle" className="vh-100 vw-100 text-center">
-              <Col span={24}><h5>No data found</h5></Col>
-            </Row>
-          ) : (
-            ""
-          )}
+          {
+            // eslint-disable-next-line
+            props.movies.length == 0 ? (
+              <Row
+                justify="center"
+                align="middle"
+                className="vh-100 vw-100 text-center"
+              >
+                <Col span={24}>
+                  <h5>No data found</h5>
+                </Col>
+              </Row>
+            ) : (
+              ""
+            )
+          }
           {props.movies.map((movie, index) => (
             <Card
               key={movie.id}
@@ -47,12 +56,24 @@ const MovieList = (props) => {
             >
               <Meta
                 title={movie.title}
+                style={{ display: "flex", justifyContent: "space-between" }}
                 description={
                   <Row
                     className=" align-items-center justify-content-center"
                     onClick={() => props.handleFavouritesClick(movie)}
                   >
-                    <FavouriteComponent />
+                    <Image
+                      style={{ cursor: "pointer" }}
+                      src={
+                        props.favouritesList.find(
+                          (favMovie) => favMovie.id === movie.id
+                        )
+                          ? FavoriteFilled
+                          : FavoriteOutline
+                      }
+                      alt=""
+                      preview={false}
+                    />
                   </Row>
                 }
               />

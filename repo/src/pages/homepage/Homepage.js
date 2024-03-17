@@ -3,8 +3,6 @@ import { Row, Col, Menu } from "antd";
 import "./homepage.css";
 import MovieList from "../../components/MovieList";
 import MovieListHeading from "../../components/MovieListHeading";
-import AddFavourites from "../../components/AddFavourites";
-import RemoveFavourites from "../../components/RemoveFavourites";
 import Search from "antd/lib/input/Search";
 import { openNotification } from "../../components/OpenNotification";
 import {
@@ -35,6 +33,13 @@ const Homepage = () => {
   };
   useEffect(() => {
     getMovies("movies-in-theaters");
+    getFavouriteMovies()
+      .then((res) => {
+        setFavourites(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   const getMovieRequest = async (searchValue) => {
     await getMovieSearch(current, searchValue)
@@ -146,13 +151,14 @@ const Homepage = () => {
       <MovieList
         loading={loading}
         current={current}
+        favouritesList={favourites}
         movies={movies}
         handleFavouritesClick={
           current === "favourite" ? removeFavouriteMovie : addFavouriteMovie
         }
-        favouriteComponent={
-          current === "favourite" ? RemoveFavourites : AddFavourites
-        }
+        // favouriteComponent={
+        //   current === "favourite" ? FavoriteFilled : FavoriteOutline
+        // }
       />
 
       {/* <Row>

@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseUrl = process.env.REACT_APP_baseUrl;
+const baseUrl = process.env.REACT_APP_DB_URL;
 
 export const getAllMovie = async (data) => await axios.get(`${baseUrl}${data}`);
 export const getMovieSearch = async (current, searchValue) =>
